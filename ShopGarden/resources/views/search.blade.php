@@ -109,5 +109,5 @@
     </div>
 @endsection
 @section('js-files')
-    <script src="{{ asset('js/welcome.js') }}"></script>
+    <script src="{{ asset('js/filters.js') }}"></script>
 @endsection

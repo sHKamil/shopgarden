@@ -20,8 +20,11 @@ use App\Http\Controllers\CartController;
 //     return view('welcome');
 // });
 
-Route::get('/', [MainViewController::class, 'index'])->name(name:'welcome');;;
-Route::get('/cart', [CartController::class, 'index'])->name(name:'cart.index');;
+Route::get('/', [MainViewController::class, 'index'])->name(name:'welcome');
+Route::get('/about', [MainViewController::class, 'about'])->name(name:'about');
+Route::get('/statute', [MainViewController::class, 'statute'])->name(name:'statute');
+Route::get('/contact', [MainViewController::class, 'contact'])->name(name:'contact');
+Route::get('/cart', [CartController::class, 'index'])->name(name:'cart.index');
 Route::post('/cart', [CartController::class, 'add'])->name(name:'cart.add');
 Route::get('/items', [ProductController::class, 'index'])->name(name:'products.index');
 Route::get('/item/{product}', [ProductController::class, 'show'])->name(name:'products.show');

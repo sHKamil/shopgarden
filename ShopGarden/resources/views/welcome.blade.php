@@ -1,20 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.appMainView')
 
 @section('content')
     <div class="container">
-        <div class="d-flex justify-content-around bg-teal mt-5 pt-4">
-            @foreach($categories as $category)
-            <div class="mt-2 mb-2 pl-2">
-            <div class="custom-control custom-checkbox">
-                <a href="?category={{ $category->id }}">
-                    <button type="button" class="btn btn-outline-success">{{ $category->name }}</button>
-                </a>
-            </div>
-            </div>
-            @endforeach 
-        </div>
-        <hr/>
-        <div class="row">
+        <div class="row justify-content-around">
         <div class="col-md-8 order-md-2 col-lg-9">
             <div class="container-fluid">
             {{-- <div class="row   mb-5">
@@ -47,24 +35,29 @@
             </div> --}}
             <div class="row">
                 @foreach ($products as $product)
-                    <div class="col-6 col-md-6 col-lg-4 mb-3">
-                        <a href="{{ route('products.show', $product->id) }}">
-                            <div class="card h-100 border-0">
-                                <div class="card-img-top">
-                                @if(!is_null($product->image_path))
-                                    <img src="{{ asset('app/' . $product->image_path) }}" class="img-fluid mx-auto d-block" alt="Miejsce na zdjęcie">
-                                    {{-- <img src="storage/app/products/r6QuQDq9EuZuGzYN0LJ8b6PaUsY8AJkBqVnCLqqA.jpg" class="img-fluid mx-auto d-block" alt="Miejsce na zdjęcie"> --}}
-                                @else
-                                    <img src="https://via.placeholder.com/240x240/5fa9f8/efefef" class="img-fluid mx-auto d-block" alt="Miejsce na zdjęcie">                            
-                                @endif
-                            </div>
-                                <div class="card-body text-center">
-                                <h4 class="card-title">
-                                    <a href="product.html" class=" font-weight-bold text-dark text-uppercase small"> {{ $product->name }}</a>
-                                </h4>
-                                <h5 class="card-price small text-warning">
-                                    <i>{{ $product->price }}</i>
-                                </h5>
+                    <div class="col-6 col-md-6 col-lg-4 my-1">
+                        <a class="text-decoration-none" href="{{ route('products.show', $product->id) }}">
+                            <div class="border rounded-3 border-1">
+                                <div class="card h-100">
+                                    <div class="card-img-top">
+                                    @if(!is_null($product->image_path))
+                                        <img src="{{ asset('app/' . $product->image_path) }}" class=" mx-auto d-block" width="200" height="200" alt="Miejsce na zdjęcie">
+                                        {{-- <img src="storage/app/products/r6QuQDq9EuZuGzYN0LJ8b6PaUsY8AJkBqVnCLqqA.jpg" class="img-fluid mx-auto d-block" alt="Miejsce na zdjęcie"> --}}
+                                    @else
+                                        <img src="https://via.placeholder.com/240x240/5fa9f8/efefef" class="img-fluid mx-auto d-block" alt="Miejsce na zdjęcie">                            
+                                    @endif
+                                    </div>
+                                    <div class="card-body text-left">
+                                        <h4 class="card-title">
+                                            <span class="font-weight-bold text-dark text-decoration-none small"> {{ $product->name }}</span>
+                                        </h4>
+                                        <h6 class="card-price text-dark m-0 lh-1 small">
+                                            Kategoria: {{ $product->category->name }}
+                                        </h6>
+                                        <h5 class="card-price text-dark m-0 lh-1 small">
+                                            {{ $product->price }} PLN
+                                        </h5>
+                                    </div>
                                 </div>
                             </div>
                         </a>
@@ -73,40 +66,30 @@
             </div>
             </div>
         </div>
-        <form class="col-md-4 order-md-1 col-lg-3 sidebar-filter">
-            {{-- <h3 class="mt-0 mb-5">Showing <span class="text-primary">12</span> Products</h3>
-            <h6 class="text-uppercase font-weight-bold mb-3">Categories</h6> --}}
-            {{-- @foreach($categories as $category)
-            <div class="mt-2 mb-2 pl-2">
-            <div class="custom-control custom-checkbox">
-                <a href="?category={{ $category->id }}">
-                    <label class="custom-control-label" for="category-1">{{ $category->name }}</label>
-                </a>
+        <div class="card border-light p-0" style="width: 15rem;">
+            <div class="h-70 border border-3 rounded-3 border-info">
+            <img src="{{ asset('app/'.$product->image_path) }}" class="card-img-top" alt="Zdjęcie poglądowe">
+            <div class="card-body">
+              <h5 class="card-title">{{ $product->name }}</h5>
+              <p class="card-text">
+                  Kod rabatowy: ******.<br/>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{ $product->quantity/100*100 }}%"></div>
+                  </div>
+                  Pozostało sztuk: {{ $product->quantity }} <br/>
+                  <p class="mb-0 mt-2 lh-1 text-decoration-line-through text-muted">248.00 PLN</p>
+                  <p class="m-0 lh-1">{{ $product->price }} PLN</p>
+                </p>
+                <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-primary">Dodaj do koszyka</a>
             </div>
             </div>
-            @endforeach --}}
-            {{-- @foreach($categories as $category)
-            <div class="mt-2 mb-2 pl-2">
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="{{ $category->id }}">
-                <label class="custom-control-label" for="category-1">{{ $category->name }}</label>
             </div>
-            </div>
-            @endforeach --}}
-            
-            <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
-            <h6 class="text-uppercase mt-5 mb-3 font-weight-bold">Price</h6>
-            <div class="price-filter-control">
-                <input type="number" class="form-control w-50 pull-left mb-2" placeholder="50" id="price_min" name="filter[price_min]">
-                <input type="number" class="form-control w-50 pull-right" placeholder="150" id="price_max" name="filter[price_max]">
-            </div>
-            <input id="ex2" type="text" class="slider " value="50,150" data-slider-min="10" data-slider-max="200" data-slider-step="5" data-slider-value="[50,150]" data-value="50,150" style="display: none;">
-            <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
-            <a href="#" id="filter-submit" class="btn btn-lg btn-block btn-primary mt-5">Update Results</a>
-        </form>
-
+            <div class="h-30">
+        </div>
         </div>
     </div>
+</div>
 @endsection
 @section('js-files')
     <script src="{{ asset('js/welcome.js') }}"></script>

@@ -41,14 +41,13 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                <div class="collapse navbar-collapse row" id="navbarSupportedContent">
+                    <div class="col-8">
 
-                    </ul>
+                    </div>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto col-4">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -85,17 +84,19 @@
                             </li>
                         @endguest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cart.index') }}">Koszyk</a>
+                            <a class="nav-link" href="{{ route('cart.index') }}"><i class="bi bi-cart4"></i></a>
                         </li>
                     </ul>
+
+                    <!-- Left Side Of Navbar -->
                 </div>
             </div>
         </nav>
-
-        <main class="pb-4 pt-3">
+        <main class="pb-4 pt-5 mt-5">
             @yield('content')
         </main>
     </div>
+
     <script src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript">
         @yield('javascript')
