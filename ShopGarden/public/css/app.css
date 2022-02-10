@@ -19436,3 +19436,11 @@ body.swal2-toast-shown .swal2-container.swal2-bottom-end, body.swal2-toast-shown
 .bi-filetype-xlsx::before {
   content: "\f793";
 }
+
+.rounded-pill-left {
+  border-radius: 50rem 0rem 0rem 50rem !important;
+}
+
+.rounded-pill-right {
+  border-radius: 0rem 50rem 50rem 0rem !important;
+}
