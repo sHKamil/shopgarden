@@ -1,53 +1,52 @@
-@extends('layouts.app')
+@extends('layouts.appMainView')
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between">
-                    <div>SHOW</div>
-                    <div>                    
-                        <a href="{{ route('products.index') }}">
-                            <button type="button" class="btn btn-primary">Wróć</button>
-                        </a>
+    <section class="py-0">
+        <div class="container px-4 px-lg-5 my-2">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{asset('app/'.$product->image_path)}}" alt="..." /></div>
+                <div class="col-md-6">
+                    <div class="small mb-1">SKU: BST-498</div>
+                    <h1 class="display-5 fw-bolder">{{$product->name}}</h1>
+                    <div class="fs-5 mb-5">
+                        <span class="text-decoration-line-through">45.00 PLN</span>
+                        <span>{{$product->price}} PLN</span>
                     </div>
-                </div>
-
-                <div class="card-body d-flex">
-                    <div class="mb-3">
-                        <img src="{{ asset('app/'.$product->image_path) }}" height="200" width="200"/>
+                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                    <div class="d-flex">
+                        <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" min="1" max="{{$product->quantity}}" style="max-width: 4rem" />
+                        <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                            <i class="bi-cart-fill me-1"></i>
+                            Dodaj do koszyka
+                        </button>
                     </div>
-
-                    <form method="POST" action="{{ route('cart.add') }}" enctype="multipart/form-data">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="quantity" class="col-md-6 col-form-label text-md-end">Ilość sztuk (max {{ $product->quantity }}):</label>
-
-                            <div class="col-md-6">
-                                <input id="quantity" type="number" min="1" max="{{ $product->quantity }}" class="form-control @error('quantity') is-invalid @enderror" name="quantity" required>
-
-                                @error('quantity')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <a href="{{ route('cart.add') }}">
-                                    <button type="submit" class="btn btn-success">
-                                        Kup
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <section class="py-5 bg-light">
+        <div class="container px-4 px-lg-5 mt-5">
+            <h2 class="fw-bolder mb-4">Sprawdź także</h2>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                @foreach($products as $product)
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <img class="card-img-top" width="200" height="200" src="{{asset('app/'.$product->image_path)}}" alt="Zdjęcie poglądowe" />
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <h5 class="fw-bolder">{{$product->name}}</h5>
+                                {{$product->price}} PLN
+                            </div>
+                        </div>
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/item/{{$product->id}}">Sprawdź</a></div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 </div>
 @endsection

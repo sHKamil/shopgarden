@@ -20,7 +20,9 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return view( view: 'products.show', data: [
-            'product' => $product
+            'product' => $product,
+            'categories' => ProductCategory::all(),
+            'products' => Product::paginate(4)
         ]);
     }
 

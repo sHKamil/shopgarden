@@ -26,20 +26,20 @@
                     <a class="navbar-brand pt-4 col-2 text-center align-items-center" href="{{ url('/') }}">
                         {{ config('app.name', 'ShopGarden') }}
                     </a>
-                    <div class="col-9">
-                        <div class="card-body mt-2">
+                    <div class="col-9 row justify-content-end">
+                        <div class="card-body mt-2 col-6">
                             <form method="GET" action="{{ route('welcome') }}">
                                 <div class="input-group">
                                     <input class="form-control rounded-pill-left" placeholder="Szukaj" type="text" name="name">
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="submit">
+                                        <button style="width: 10vw;" class="btn btn-primary rounded-pill-right" type="submit">
                                             <i class="bi bi-search"></i>
                                         </button>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <button class="navbar-toggler col-2 my-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                     </div>
