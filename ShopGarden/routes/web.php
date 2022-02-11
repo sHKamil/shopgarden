@@ -29,10 +29,15 @@ Route::post('/cart', [CartController::class, 'add'])->name(name:'cart.add');
 Route::get('/items', [ProductController::class, 'index'])->name(name:'products.index');
 Route::get('/item/{product}', [ProductController::class, 'show'])->name(name:'products.show');
 Route::get('/items/create', [ProductController::class, 'create'])->name(name:'products.create')->middleware(middleware:'auth');
+Route::get('/items/promo/create', [ProductController::class, 'promo_create'])->name(name:'products.promoCreate')->middleware(middleware:'auth');
 Route::post('/items', [ProductController::class, 'add'])->name(name:'products.add');
+Route::post('/items/promo', [ProductController::class, 'promo_add'])->name(name:'products.promo_add');
 Route::get('/items/edit/{product}', [ProductController::class, 'edit'])->name(name:'products.edit');
+Route::get('/items/promo/edit/{promo}', [ProductController::class, 'promo_edit'])->name(name:'products.promoEdit');
 Route::post('/items/{product}', [ProductController::class, 'update'])->name(name:'products.update');
-Route::delete('/items/{product}', [ProductController::class, 'delete'])->name(name:'products.delete');
+Route::post('/items/promo/{promo}', [ProductController::class, 'promo_update'])->name(name:'products.promoUpdate');
+Route::delete('/items/{product}', [ProductController::class, 'delete']);
+Route::delete('/items/promo/{promo}', [ProductController::class, 'promo_delete'])->name(name:'products.promoDelete');
 
 Auth::routes();
 

@@ -12,9 +12,13 @@ class MainViewController extends Controller
     public function index(ProductFilters $filters)
     {
         $categories = ProductCategory::all();
-        $products = Product::filterBy($filters)->paginate(12);
+        $products = Product::filterBy($filters)->paginate(9);
 
-        return view('welcome', compact('products','categories'));
+        // return view('welcome', compact('products','categories'));
+        return view( view: 'welcome', data: [
+            'categories' => ProductCategory::all(),
+            'products' => $products
+        ]);
     }
 
 }
