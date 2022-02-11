@@ -12,8 +12,10 @@ class PromoCode extends Model
     protected $fillable = [
         'id',
         'promo_code',
+        'type',
         'product_id',
         'quantity',
+        'quantity_left',
         'linear_discount',
     ];
 }

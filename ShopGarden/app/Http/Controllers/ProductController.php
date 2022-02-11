@@ -60,6 +60,7 @@ class ProductController extends Controller
     public function promo_add(Request $request)
     {
         $promo_code = new PromoCode($request->all());
+        $promo_code->quantity_left=$request->quantity;
         $promo_code->save();
         return redirect(route('products.index'));
     }
@@ -110,8 +111,9 @@ class ProductController extends Controller
         }
     }
 
-    public function promo_delete(PromoCode $promo_code)
+    public function promo_delete($id)
     {
+        $promo_code = PromoCode::where('id', $id);
         try{
             $promo_code->delete();
             return response()->json([

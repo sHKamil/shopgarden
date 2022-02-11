@@ -30,7 +30,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Nazwa</th>
                             <th scope="col">Kategoria</th>
-                            <th scope="col">Cena za sztukę</th>
+                            <th scope="col">Cena za sztukę [PLN]</th>
                             <th scope="col">Ilość</th>
                           </tr>
                         </thead>
@@ -88,8 +88,10 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Kod promocyjny</th>
-                            <th scope="col">Ilość produktów</th>
-                            <th scope="col">Przecena</th>
+                            <th scope="col">Rodzaj</th>
+                            <th scope="col">Ilość</th>
+                            <th scope="col">Pozostała ilość</th>
+                            <th scope="col">Przecena [PLN]</th>
                             <th scope="col">Id produktu</th>
                           </tr>
                         </thead>
@@ -98,7 +100,9 @@
                           <tr>
                             <th scope="row">{{ $promo_code->id }}</th>
                             <td class="text-center">{{ $promo_code->promo_code }}</td> 
+                            <td class="text-center">{{ $promo_code->type }}</td> 
                             <td class="text-center">{{ $promo_code->quantity }}</td> 
+                            <td class="text-center">{{ $promo_code->quantity_left }}</td> 
                             <td class="text-center">{{ $promo_code->linear_discount }}</td> 
                             <td class="text-center">{{ $promo_code->product_id }}</td> 
                             <td>

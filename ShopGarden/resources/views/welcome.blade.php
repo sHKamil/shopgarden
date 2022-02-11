@@ -68,17 +68,17 @@
         </div>
         <div class="card border-light p-0" style="width: 15rem;">
             <div class="h-70 border border-3 rounded-3 border-info">
-            <img src="{{ asset('app/'.$product->image_path) }}" class="card-img-top" alt="Zdjęcie poglądowe">
+            <img src="{{ asset('app/'.$promo_product->image_path) }}" height="232" class="card-img-top" alt="Zdjęcie poglądowe">
             <div class="card-body">
-              <h5 class="card-title">{{ $product->name }}</h5>
+              <h5 class="card-title">{{ $promo_product->name }}</h5>
               <p class="card-text">
-                  Kod rabatowy: ******.<br/>
+                  Kod rabatowy: {{ $promo_code->promo_code }}<br/>
                   <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{ $product->quantity/100*100 }}%"></div>
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{ $promo_code->quantity_left/$promo_code->quantity*100 }}%"></div>
                   </div>
-                  Pozostało sztuk: {{ $product->quantity }} <br/>
-                  <p class="mb-0 mt-2 lh-1 text-decoration-line-through text-muted">248.00 PLN</p>
-                  <p class="m-0 lh-1">{{ $product->price }} PLN</p>
+                  Pozostało sztuk: {{ $promo_code->quantity_left }} / {{ $promo_code->quantity}} <br/>
+                  <p class="mb-0 mt-2 lh-1 text-decoration-line-through text-muted">{{ $promo_product->price }} PLN</p>
+                  <p class="m-0 lh-1">{{ $promo_product->price-$promo_code->linear_discount }}.00 PLN</p>
                 </p>
                 <div class="d-flex justify-content-center">
               <a href="#" class="btn btn-primary">Dodaj do koszyka</a>

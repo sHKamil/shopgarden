@@ -6,7 +6,6 @@
         }else if($(this).hasClass('prod')){
           var url = "items/" 
         }
-        console.log(url);
         Swal.fire({
             title: 'Napewno chcesz usunąć ten rekord?',
             text: "Nie biędzie się dało go już odzyskać!",
