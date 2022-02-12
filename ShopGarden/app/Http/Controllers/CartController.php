@@ -23,14 +23,17 @@ class CartController extends Controller
         $carts = Cart::where('user_id', $current_user_id)->orderBy('updated_at')->get();
         $products = [];
         $i = 0;
+        $sum = 0;
         foreach ($carts as $cart) {
             $products[$i] = Product::where('id', $cart->product_id)->first();
+            $sum += $products[$i]->price*$cart->quantity;
             $i++;
         }
 
         return view('cart.index', [
             'carts' => $carts,
             'products' => $products,
+            'sum' => $sum,
         ]);
     }
 
