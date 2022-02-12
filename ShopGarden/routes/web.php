@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MainViewController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::get('/', [MainViewController::class, 'index'])->name(name:'welcome');
 Route::get('/about', [MainViewController::class, 'about'])->name(name:'about');
 Route::get('/statute', [MainViewController::class, 'statute'])->name(name:'statute');
 Route::get('/contact', [MainViewController::class, 'contact'])->name(name:'contact');
+Route::get('/user', [UserController::class, 'index'])->name(name:'user');
 Route::get('/cart', [CartController::class, 'index'])->name(name:'cart.index');
 Route::post('/cart/{product}', [CartController::class, 'add'])->name(name:'cart.add');
 Route::delete('/cart/{product}', [CartController::class, 'delete'])->name(name:'cart.delete');

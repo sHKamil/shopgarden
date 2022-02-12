@@ -100,6 +100,9 @@
                                     <a class="dropdown-item" href="{{ route('products.index') }}">
                                         List produktów
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('user') }}">
+                                        Dane do dostawy
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
