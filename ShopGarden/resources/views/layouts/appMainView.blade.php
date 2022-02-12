@@ -97,9 +97,11 @@
                                         Witaj {{ Auth::user()->name }}
                                         <hr/>
                                     </div>
+                                    @can('isAdmin')
                                     <a class="dropdown-item" href="{{ route('products.index') }}">
                                         List produktów
                                     </a>
+                                    @endcan
                                     <a class="dropdown-item" href="{{ route('user') }}">
                                         Dane do dostawy
                                     </a>
