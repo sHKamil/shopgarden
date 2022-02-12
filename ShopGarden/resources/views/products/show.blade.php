@@ -16,7 +16,7 @@
                     <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
                     <div class="d-flex">
                         <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" min="1" max="{{$product->quantity}}" style="max-width: 4rem" />
-                        <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                        <button class="btn btn-outline-dark flex-shrink-0 add-to-cart" data-id="{{$product->id}}" type="button">
                             <i class="bi-cart-fill me-1"></i>
                             Dodaj do koszyka
                         </button>
@@ -49,4 +49,10 @@
         </div>
     </section>
 </div>
+@endsection
+@section('javascript')
+    const addToCart = '{{ url('cart') }}';
+@endsection
+@section('js-files')
+    <script src="{{ asset('js/show.js') }}"></script>
 @endsection

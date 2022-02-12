@@ -5,6 +5,8 @@
           var url = "items/promo/" 
         }else if($(this).hasClass('prod')){
           var url = "items/" 
+        }else if($(this).hasClass('cart')){
+          var url = "cart/" 
         }
         Swal.fire({
             title: 'Napewno chcesz usunąć ten rekord?',
