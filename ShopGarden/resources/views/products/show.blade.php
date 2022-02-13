@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="container">
+    <div class="">
+        <a class="nav-link d-inline fw-bold text-dark" href="{{ route('welcome') }}">Strona główna</a>>
+        @if(!empty($product->category->name))
+        <a class="nav-link d-inline text-dark" href="/?category={{ $product->category->id }}">{{$product->category->name}}</a>
+        @endif
+    </div>
     <section class="py-0">
         <div class="container px-4 px-lg-5 my-2">
             <div class="row gx-4 gx-lg-5 align-items-center">

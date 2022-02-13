@@ -135,6 +135,11 @@
         <main class="pb-4 mt-2">
             @yield('content')
         </main>
+        <footer class="bg-light bg-gradient py-4">
+            <div class="container text-center">
+              <p class="font-italic text-muted mb-0">&copy; 2022 ShopGarden.com Wszelkie prawa zastrzeżone.</p>
+            </div>
+        </footer>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript">

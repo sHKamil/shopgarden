@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-4">
         <div class="col-md-10 d-flex justify-content-between">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                   <span class="text-muted">Koszyk</span>
@@ -13,7 +13,7 @@
               <div class="col-7 ml-5 mr-1">
                 <div class="row d-flex justify-content-between p-2">
                   @if(empty($carts[0]))
-                    <div class="col-12 text-center">
+                    <div class="col-12 text-center border rounded-pill border-danger">
                       <h2 class="my-0 fs-1">Twój koszyk jest pusty</h2>
                     </div>
                   @endif

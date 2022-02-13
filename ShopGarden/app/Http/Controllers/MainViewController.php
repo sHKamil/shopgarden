@@ -24,4 +24,19 @@ class MainViewController extends Controller
         ]);
     }
 
+    public function about()
+    {
+        return view( view: 'about');
+    }
+
+    public function statute()
+    {
+        return view( view: 'statute');
+    }
+
+    public function contact()
+    {
+        return view( view: 'contact');
+    }
+
 }

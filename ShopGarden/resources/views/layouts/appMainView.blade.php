@@ -126,7 +126,7 @@
                     <ul class="navbar-nav me-auto col-12 justify-content-around my-1">
                         @foreach($categories as $category)
                         <li class="nav-item">
-                            <a class="nav-link border m-1 btn text-uppercase" href="?category={{ $category->id }}">
+                            <a class="nav-link border m-1 btn text-uppercase" href="/?category={{ $category->id }}">
                                 {{ $category->name }}
                             </a>
                         </li>
@@ -139,6 +139,11 @@
         <main class="pb-4 mt-2">
             @yield('content')
         </main>
+        <footer class="bg-light bg-gradient py-4">
+            <div class="container text-center">
+              <p class="font-italic text-muted mb-0">&copy; 2022 ShopGarden.com Wszelkie prawa zastrzeżone.</p>
+            </div>
+        </footer>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript">
