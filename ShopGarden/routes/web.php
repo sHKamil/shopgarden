@@ -35,7 +35,7 @@ Route::delete('/cart/{product}', [CartController::class, 'delete'])->name(name:'
 // Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
 
 Route::get('/items', [ProductController::class, 'index'])->name(name:'products.index')->middleware('can:isAdmin');
-Route::get('/item/{product}', [ProductController::class, 'show'])->name(name:'products.show')->middleware('can:isAdmin');
+Route::get('/item/{product}', [ProductController::class, 'show'])->name(name:'products.show');
 Route::get('/items/create', [ProductController::class, 'create'])->name(name:'products.create')->middleware('can:isAdmin');
 Route::post('/items', [ProductController::class, 'add'])->name(name:'products.add')->middleware('can:isAdmin');
 Route::get('/items/edit/{product}', [ProductController::class, 'edit'])->name(name:'products.edit')->middleware('can:isAdmin');
@@ -51,4 +51,4 @@ Route::delete('/items/promo/{promo}', [ProductController::class, 'promo_delete']
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

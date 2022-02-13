@@ -37,6 +37,7 @@
                     </div>
                   </div>
                   @endforeach
+                  @if(!empty($carts[0]))
                   <div class="mt-4 col-12 row justify-content-between border border-info rounded-pill">
                     <div class="col-6 pr-0">
                     </div>
@@ -46,6 +47,7 @@
                     <div class="col-1">
                     </div>
                   </div>
+                  @endif
               </div>
             </div>
             <div style="min-height: 30vh;" class="col-5 ml-1 mr-5 border rounded-3 row">
