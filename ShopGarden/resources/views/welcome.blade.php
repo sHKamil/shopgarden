@@ -34,11 +34,12 @@
                 </div>
             </div> --}}
             <div class="row">
+                
                 @foreach ($products as $product)
                     <div class="col-6 col-md-6 col-lg-4 my-1">
                         <a class="text-decoration-none" href="{{ route('products.show', $product->id) }}">
-                            <div class="border rounded-3 border-1">
-                                <div class="card h-100">
+                            <div style="min-height: 300px" class="border rounded-3 border-1">
+                                <div style="min-height: 300px" class="card h-100">
                                     <div class="card-img-top">
                                     @if(!is_null($product->image_path))
                                         <img src="{{ asset('app/' . $product->image_path) }}" class=" mx-auto d-block" width="200" height="200" alt="Miejsce na zdjęcie">
@@ -49,7 +50,7 @@
                                     </div>
                                     <div class="card-body text-left">
                                         <h4 class="card-title">
-                                            <span class="font-weight-bold text-dark text-decoration-none small"> {{ $product->name }}</span>
+                                            <span class="font-weight-bold text-dark text-decoration-none small fs-5 "> {{ $product->name }}</span>
                                         </h4>
                                         <h6 class="card-price text-dark m-0 lh-1 small">
                                             Kategoria: {{ $product->category->name }}
@@ -63,10 +64,13 @@
                         </a>
                     </div>
                 @endforeach
+                <div class="d-flex justify-content-around">
+                    {{ $products->links() }}
+                </div>
             </div>
             </div>
         </div>
-        <div class="card border-light p-0" style="width: 15rem;">
+        <div class="card border-light bg-light p-0" style="width: 15rem;">
             <div class="h-70 border border-3 rounded-3 border-info">
             <img src="{{ asset('app/'.$promo_product->image_path) }}" height="232" class="card-img-top" alt="Zdjęcie poglądowe">
             <div class="card-body">
@@ -88,7 +92,7 @@
             <div class="h-30">
         </div>
         </div>
-    </div>
+    </div>    
 </div>
 @endsection
 @section('js-files')

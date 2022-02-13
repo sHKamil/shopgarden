@@ -10,6 +10,8 @@
     <title>{{ config('app.name', 'ShopGarden') }}</title>
 
     <!-- Scripts -->
+    {{-- <script src="https://www.paypal.com/sdk/js?components=buttons,hosted-fields&client-id=<YOUR-CLIENT-ID>" data-client-token="<YOUR-CLIENT-TOKEN>"></script> --}}
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -17,6 +19,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link rel="stylesheet" type="text/css" href="https://www.paypalobjects.com/webstatic/en_US/developer/docs/css/cardfields.css"/> --}}
+
+    
 </head>
 <body>
     <div id="app">

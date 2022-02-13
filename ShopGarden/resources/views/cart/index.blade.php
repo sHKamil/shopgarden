@@ -52,20 +52,53 @@
             </div>
             <div style="min-height: 30vh;" class="col-5 ml-1 mr-5 border rounded-3 row">
               <form class="col-12 my-4">
-                <div class="input-group">
+                <div class="input-group mb-3">
                   <input type="text" class="form-control" placeholder="Kod promocyjny">
                   <div class="input-group-append">
                     <button type="submit" class="btn btn-secondary">Odbierz</button>
                   </div>
                 </div>
+                <div id="paypal-button-container"></div>
                 <div class="input-group-append">
-                  <button type="submit" class="btn btn-success w-100 mt-5">Złóż zamóweinie</button>
+                  <button type="submit" class="btn btn-success w-100 mt-2">Złóż zamóweinie</button>
                 </div>
               </form>
             </div>
         </div>
     </div>
 </div>
+<script>
+  paypal.Buttons({
+
+    // Sets up the transaction when a payment button is clicked
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '77.44' // Can reference variables or functions. Example: `value: document.getElementById('...').value`
+          }
+        }]
+      });
+    },
+
+    // Finalize the transaction after payer approval
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(orderData) {
+        // Successful capture! For dev/demo purposes:
+            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+            var transaction = orderData.purchase_units[0].payments.captures[0];
+            alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+
+        // When ready to go live, remove the alert and show a success message within this page. For example:
+        // var element = document.getElementById('paypal-button-container');
+        // element.innerHTML = '';
+        // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+        // Or go to another URL:  actions.redirect('thank_you.html');
+      });
+    }
+  }).render('#paypal-button-container');
+
+</script>
 @endsection
 @section('js-files')
   <script src="{{ asset('js/delete.js') }}"></script>
