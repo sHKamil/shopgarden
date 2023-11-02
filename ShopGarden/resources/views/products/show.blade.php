@@ -11,7 +11,14 @@
     <section class="py-0">
         <div class="container px-4 px-lg-5 my-2">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{asset('app/'.$product->image_path)}}" alt="..." /></div>
+                
+                <div class="col-md-6">
+                    @if(!is_null($product->image_path))
+                        <img src="{{ asset('storage/' . $product->image_path) }}" class="card-img-top mb-5 mb-md-0"/>
+                    @else
+                        <img class="card-img-top mb-5 mb-md-0" src="https://via.placeholder.com/500x500/5fa9f8/efefef" alt="Miejsce na zdjęcie"/>
+                    @endif
+                </div>
                 <div class="col-md-6">
                     <div class="small mb-1">SKU: BST-498</div>
                     <h1 class="display-5 fw-bolder">{{$product->name}}</h1>
@@ -38,7 +45,11 @@
                 @foreach($products as $product)
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <img class="card-img-top" width="200" height="200" src="{{asset('app/'.$product->image_path)}}" alt="Zdjęcie poglądowe" />
+                        @if(!is_null($product->image_path))
+                            <img src="{{ asset('storage/' . $product->image_path) }}" class="card-img-top" width="200" height="200"/>
+                        @else
+                            <img src="https://via.placeholder.com/500x500/5fa9f8/efefef" alt="Miejsce na zdjęcie" class="card-img-top" width="200" height="200"/>
+                        @endif              
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <h5 class="fw-bolder">{{$product->name}}</h5>

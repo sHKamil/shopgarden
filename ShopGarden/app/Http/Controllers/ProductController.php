@@ -51,7 +51,7 @@ class ProductController extends Controller
     {
         $product = new Product($request->all());
         if ($request->hasFile('image')) {
-            $product->image_path = $request->file('image')->store('products');
+            $product->image_path = $request->file('image')->store('public/products');
         }
         $product->save();
         return redirect(route('products.index'));
