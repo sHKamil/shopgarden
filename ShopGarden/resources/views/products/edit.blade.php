@@ -89,7 +89,7 @@
 
                         <div class="row mb-3 justify-content-center">
                             <div class="col-md-6">
-                                <img src='{{ asset('app/'.$product->image_path) }}' alt="Miejsce na zdjęcie poglądowe" width="250" height="250" />
+                                <img src='{{ asset("storage/".$product->image_path) }}' alt="Miejsce na zdjęcie poglądowe" width="250" height="250" />
                             </div>
                         </div>
 

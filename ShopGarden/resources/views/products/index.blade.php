@@ -39,7 +39,7 @@
                           <tr>
                             <th scope="row">{{ $product->id }}</th>
                             <td class="text-center">{{ $product->name }}</td> 
-                            <td class="text-center">{{ $product->category->name }}</td> 
+                            <td class="text-center">{{ $product->category->name ?? ''}}</td> 
                             <td class="text-center">{{ $product->price }}</td> 
                             <td class="text-center">{{ $product->quantity }}</td> 
                             <td>

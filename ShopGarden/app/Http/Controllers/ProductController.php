@@ -51,7 +51,8 @@ class ProductController extends Controller
     {
         $product = new Product($request->all());
         if ($request->hasFile('image')) {
-            $product->image_path = $request->file('image')->store('public/products');
+            $path = $request->file('image')->store('public/products');
+            $product->image_path = str_replace("public/" ,"", $path); // fix for storage:link
         }
         $product->save();
         return redirect(route('products.index'));
@@ -84,6 +85,10 @@ class ProductController extends Controller
     public function update(Product $product, Request $request)
     {
         $product->fill($request->all());
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/products');
+            $product->image_path = str_replace("public/" ,"", $path);
+        }
         $product->save();
         return redirect(route('products.index'));
     }
