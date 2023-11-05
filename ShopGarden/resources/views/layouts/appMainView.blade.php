@@ -124,6 +124,7 @@
                     <hr class="my-0">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto col-12 justify-content-around my-1">
+                        @if(isset($categories))
                         @foreach($categories as $category)
                         <li class="nav-item">
                             <a class="nav-link border m-1 btn text-uppercase" href="/?category={{ $category->id }}">
@@ -131,6 +132,7 @@
                             </a>
                         </li>
                         @endforeach 
+                        @endif
                     </ul>
                 </div>
             </div>

@@ -14,8 +14,11 @@ class MainViewController extends Controller
     {
         $products = Product::filterBy($filters)->paginate(9);
         $promo_code = PromoCode::where('type', 'main')->first();
-        $promo_product = Product::where('id', $promo_code->product_id)->first();
-        // return view('welcome', compact('products','categories'));
+        $promo_product = $promo_code ? Product::where('id', $promo_code->product_id)->first() : null;
+        if ($products[0] === null){
+            return view( view: 'welcomeNoItems');
+        }
+
         return view( view: 'welcome', data: [
             'categories' => ProductCategory::all(),
             'products' => $products,

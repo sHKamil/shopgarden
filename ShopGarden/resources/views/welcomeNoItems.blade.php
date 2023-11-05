@@ -1,6 +1,7 @@
 @extends('layouts.appMainView')
 
 @section('content')
+
 <div class="container">
       <div id="carouselExampleCaptions" class="carousel slide mb-3" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -71,71 +72,10 @@
                     </div>
                     </div>
                 </div> --}}
-                
-                <div class="row">
-                    
-                    
-                    @foreach ($products as $product)
-                        <div class="col-6 col-md-6 col-lg-4 my-1">
-                            <a class="text-decoration-none" href="{{ route('products.show', $product->id) }}">
-                                <div style="min-height: 300px" class="border rounded-3 border-1">
-                                    <div style="min-height: 300px" class="card h-100">
-                                        <div class="card-img-top">
-                                        @if(!is_null($product->image_path))
-                                            <img src="{{ asset('storage/' . $product->image_path) }}" class=" mx-auto d-block" width="200" height="200" alt="Miejsce na zdjęcie">
-                                        @else
-                                            <img src="https://via.placeholder.com/240x240/5fa9f8/efefef" class="img-fluid mx-auto d-block" alt="Miejsce na zdjęcie">                            
-                                        @endif
-                                        </div>
-                                        <div class="card-body text-left">
-                                            <h4 class="card-title">
-                                                <span class="font-weight-bold text-dark text-decoration-none small fs-5 "> {{ $product->name }}</span>
-                                            </h4>
-                                            <h6 class="card-price text-dark m-0 lh-1 small">
-                                                Kategoria: {{ $product->category->name ?? ''}}
-                                            </h6>
-                                            <h5 class="card-price text-dark m-0 lh-1 small">
-                                                {{ $product->price }} PLN
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                    <div class="d-flex justify-content-around">
-                        {{ $products->links() }}
-                    </div>
+                <div class="d-flex justify-content-around">
+                    <p class="fs-1 text-grey mb-5">THERE IS NO ITEMS YET</p>
                 </div>
             </div>
-        </div>
-        @if(!is_null($promo_product))
-        <div class="card border-light bg-light p-0" style="width: 15rem;">
-            <div class="h-70 border border-3 rounded-3 border-info">
-                @if(!is_null($promo_product->image_path))
-                    <img src="{{ asset('storage/'.$promo_product->image_path) }}" height="232" class="card-img-top" alt="Zdjęcie poglądowe">
-                @else
-                    <img src="https://via.placeholder.com/240x240/5fa9f8/efefef" class="img-fluid mx-auto d-block" alt="Miejsce na zdjęcie">                            
-                @endif
-                <div class="card-body">
-                    <h5 class="card-title">{{ $promo_product->name }}</h5>
-                    <p class="card-text">
-                        Kod rabatowy: {{ $promo_code->promo_code }}<br/>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{ $promo_code->quantity_left/$promo_code->quantity*100 }}%"></div>
-                        </div>
-                        Pozostało sztuk: {{ $promo_code->quantity_left }} / {{ $promo_code->quantity}} <br/>
-                        <p class="mb-0 mt-2 lh-1 text-decoration-line-through text-muted">{{ $promo_product->price }} PLN</p>
-                        <p class="m-0 lh-1">{{ $promo_product->price-$promo_code->linear_discount }}.00 PLN</p>
-                    </p>
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn btn-primary">Dodaj do koszyka</a>
-                    </div>
-                </div>
-            </div>
-            <div class="h-30">
-        @endif
-        </div>
         </div>
     </div>    
 </div>
