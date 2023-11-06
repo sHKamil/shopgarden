@@ -36,8 +36,9 @@
                             <label for="type" class="col-md-4 col-form-label text-md-end">Rodzaj</label>
 
                             <div class="col-md-6">
-                                <input id="type" type="text" class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autofocus>
-
+                                <select id="type" class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autofocus>
+                                    <option>main</option>
+                                </select>
                                 @error('type')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -44,7 +44,7 @@ Route::delete('/items/{product}', [ProductController::class, 'delete'])->middlew
 
 
 Route::get('/items/promo/create', [ProductController::class, 'promo_create'])->name(name:'products.promoCreate')->middleware('can:isAdmin');
-Route::post('/items/promo', [ProductController::class, 'promo_add'])->name(name:'products.promo_add')->middleware('can:isAdmin');
+Route::post('/items/promo/create', [ProductController::class, 'promo_add'])->name(name:'products.promo_add')->middleware('can:isAdmin');
 Route::get('/items/promo/edit/{promo}', [ProductController::class, 'promo_edit'])->name(name:'products.promoEdit')->middleware('can:isAdmin');
 Route::post('/items/promo/{promo}', [ProductController::class, 'promo_update'])->name(name:'products.promoUpdate')->middleware('can:isAdmin');
 Route::delete('/items/promo/{promo}', [ProductController::class, 'promo_delete'])->name(name:'products.promoDelete')->middleware('can:isAdmin');
