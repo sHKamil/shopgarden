@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MainViewController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
@@ -48,6 +49,13 @@ Route::post('/items/promo/create', [ProductController::class, 'promo_add'])->nam
 Route::get('/items/promo/edit/{promo}', [ProductController::class, 'promo_edit'])->name(name:'products.promoEdit')->middleware('can:isAdmin');
 Route::post('/items/promo/{promo}', [ProductController::class, 'promo_update'])->name(name:'products.promoUpdate')->middleware('can:isAdmin');
 Route::delete('/items/promo/{promo}', [ProductController::class, 'promo_delete'])->name(name:'products.promoDelete')->middleware('can:isAdmin');
+
+
+Route::get('/items/category/create', [CategoryController::class, 'create'])->name(name:'products.categoryCreate')->middleware('can:isAdmin');
+Route::post('/items/category/create', [CategoryController::class, 'add'])->name(name:'products.categoryAdd')->middleware('can:isAdmin');
+Route::get('/items/category/edit/{category}', [CategoryController::class, 'edit'])->name(name:'products.categoryEdit')->middleware('can:isAdmin');
+Route::post('/items/category/{category}', [CategoryController::class, 'update'])->name(name:'products.categoryUpdate')->middleware('can:isAdmin');
+Route::delete('/items/category/{category}', [CategoryController::class, 'delete'])->middleware('can:isAdmin');
 
 Auth::routes();
 

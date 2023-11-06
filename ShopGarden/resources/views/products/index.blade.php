@@ -28,10 +28,11 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nazwa</th>
-                            <th scope="col">Kategoria</th>
-                            <th scope="col">Cena za sztukę [PLN]</th>
-                            <th scope="col">Ilość</th>
+                            <th class="text-center" scope="col">Nazwa</th>
+                            <th class="text-center" scope="col">Kategoria</th>
+                            <th class="text-center" scope="col">Cena za sztukę [PLN]</th>
+                            <th class="text-center" scope="col">Ilość</th>
+                            <th class="text-center" scope="col"></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -42,8 +43,8 @@
                             <td class="text-center">{{ $product->category->name ?? ''}}</td> 
                             <td class="text-center">{{ $product->price }}</td> 
                             <td class="text-center">{{ $product->quantity }}</td> 
-                            <td>
-                              <a href="{{ route('products.edit', $product->id) }}">
+                            <td class="d-flex justify-content-end">
+                              <a class="text-decoration-none" href="{{ route('products.edit', $product->id) }}">
                                 <button class="btn btn-success btn-sm">
                                   E
                                 </button>
@@ -93,6 +94,7 @@
                             <th scope="col">Pozostała ilość</th>
                             <th scope="col">Przecena [PLN]</th>
                             <th scope="col">Id produktu</th>
+                            <th class="text-center" scope="col"></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -105,8 +107,8 @@
                             <td class="text-center">{{ $promo_code->quantity_left }}</td> 
                             <td class="text-center">{{ $promo_code->linear_discount }}</td> 
                             <td class="text-center">{{ $promo_code->product_id }}</td> 
-                            <td>
-                              <a href="{{ route('products.promoEdit', $promo_code->id) }}">
+                            <td class="d-flex justify-content-end">
+                              <a class="text-decoration-none" href="{{ route('products.promoEdit', $promo_code->id) }}">
                                 <button class="btn btn-success btn-sm">
                                   E
                                 </button>
@@ -119,6 +121,60 @@
                           @endforeach
                         </tbody>
                       </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                  <div>
+                    Kategorie
+                  </div>
+
+                  <div>
+                    <a href="{{ route('products.categoryCreate') }}">
+                      <button type="button" class="btn btn-primary">Dodaj</button>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th class="text-center" scope="col">Nazwa</th>
+                            <th class="text-center" scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach($categories as $category)
+                          <tr>
+                            <th scope="row">{{ $category->id }}</th>
+                            <td class="text-center">{{ $category->name }}</td> 
+                            <td class="d-flex justify-content-end">
+                              <a class="text-decoration-none" href="{{ route('products.categoryEdit', $category->id) }}">
+                                <button class="btn btn-success btn-sm">
+                                  E
+                                </button>
+                              </a>
+                                <button class="btn btn-danger btn-sm delete category" data-id="{{ $category->id }}">
+                                  X
+                                </button>
+                            </td> 
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                      {{ $products->links() }}
                 </div>
             </div>
         </div>

@@ -15,11 +15,13 @@ class ProductController extends Controller
     {
         $products = Product::filterBy($filters)->paginate(12);
         $promo_codes = PromoCode::all();
+        $categories = ProductCategory::all();
 
         // return view('products.index', compact('products'));
         return view( view: 'products.index', data:[
             'products' => $products,
-            'promo_codes' => $promo_codes
+            'promo_codes' => $promo_codes,
+            'categories' => $categories
         ]);
         
     }

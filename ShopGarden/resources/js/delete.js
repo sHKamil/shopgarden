@@ -7,7 +7,11 @@
           var url = "items/" 
         }else if($(this).hasClass('cart')){
           var url = "cart/" 
+        }else if($(this).hasClass('category')){
+          var url = "items/category/" 
         }
+
+        // this is really bad, i know...
         Swal.fire({
             title: 'Napewno chcesz usunąć ten rekord?',
             text: "Nie biędzie się dało go już odzyskać!",
